@@ -1,13 +1,13 @@
 package cli;
 
-import model.Product;
+import model.Produto;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class GerenciarEstoque {
-    public List<Product> listProduct = new ArrayList<>();
+    public List<Produto> listaProduto = new ArrayList<>();
 
     public static void main(String[] args) {
         GerenciarEstoque gerenciar =new GerenciarEstoque();

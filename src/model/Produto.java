@@ -6,24 +6,26 @@ public class Produto {
     private double quantidadeProduto;
     private double precoProduto;
 
-    public int getCodigo() {
+    public int getSku() {
         return sku;
     }
-    public void setCodigo(int sku) {
+
+    public void setSku(int sku) {
         this.sku = sku;
     }
 
     public String getNomeProduto() {
         return nomeProduto;
     }
+
     public void setNomeProduto(String nomeProduto) {
         this.nomeProduto = nomeProduto;
     }
 
-
     public double getQuantidadeProduto() {
         return quantidadeProduto;
     }
+
     public void setQuantidadeProduto(double quantidadeProduto) {
         this.quantidadeProduto = quantidadeProduto;
     }
@@ -35,3 +37,4 @@ public class Produto {
     public void setPrecoProduto(double precoProduto) {
         this.precoProduto = precoProduto;
     }
+}
