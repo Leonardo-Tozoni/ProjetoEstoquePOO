@@ -37,4 +37,36 @@ public class Produto {
     public void setPrecoProduto(double precoProduto) {
         this.precoProduto = precoProduto;
     }
+
+    @Override
+    public String toString() {
+        return  "Código = " + sku + "\n" +
+                "Nome = " + nomeProduto + "\n" +
+                "Quantidade = " + quantidadeProduto +  "\n" +
+                "Preço = " + precoProduto + "\n";
+    }
+
+    public String total(){
+        return  "Código = " + sku + "\n" +
+                "Nome = " + nomeProduto + "\n" +
+                "Quantidade = " + quantidadeProduto +  "\n" +
+                "Preço unitário = " + precoProduto + "\n" +
+                "Preço total em estoque = " + (precoProduto * quantidadeProduto) + "\n";
+    }
+
+    public boolean acrescentar(double qtd){
+        if(qtd > 0){
+            quantidadeProduto += qtd;
+            return true;
+        }
+        return false;
+    }
+
+    public boolean remover(double qtd){
+        if(quantidadeProduto <= qtd){
+            qtd -= quantidadeProduto;
+            return true;
+        }
+        return false;
+    }
 }

@@ -53,3 +53,99 @@ public class GerenciarEstoque {
         }
         return option;
     }
+
+    public void execRegistrarProduto(Scanner sc){
+        Produto produto = new Produto();
+        System.out.println("Digite o código do produto: ");
+        int codigo = Integer.parseInt(sc.nextLine());
+
+        if(!codigoExiste(codigo)){
+            produto.setSku(codigo);
+        }else{
+            System.out.println("Código já cadastrado");
+            return;
+        }
+
+        System.out.println("Informe o nome do produto: ");
+        produto.setNomeProduto(sc.nextLine());
+        System.out.println("Informe a quantidade do produto: ");
+        produto.setQuantidadeProduto(Double.parseDouble(sc.nextLine()));
+        System.out.println("Informe o valor do produto: ");
+        produto.setPrecoProduto(Double.parseDouble(sc.nextLine()));
+
+        listaProduto.add(produto);
+        System.out.println("Produto cadastrado com sucesso!");
+    }
+
+    public void execAddEstoque(Scanner sc){
+
+        Produto produto = getProduct(sc);
+
+        if(produto != null){
+            System.out.println("Informe quanto deseja acrescentar no estoque: ");
+            boolean ok = produto.acrescentar(Double.parseDouble(sc.nextLine()));
+            if(ok){
+                System.out.println("Adicionada com sucesso!");
+            }else{
+                System.out.println("ERRO! Deve ser maior que zero.");
+            }
+        }else{
+            System.out.println("Produto não cadastrado");
+        }
+    }
+
+    public void execRemoverEstoque(Scanner sc){
+
+        Produto produto = getProduct(sc);
+
+        if(produto != null){
+            System.out.println("Informe quanto deve ser removido do estoque: ");
+            boolean ok = produto.remover(Double.parseDouble(sc.nextLine()));
+            if(ok){
+                System.out.println("Removido com Sucesso!");
+            }else{
+                System.out.println("ERRO! Produto não possui estoque.");
+            }
+        }else{
+            System.out.println("Produto não cadastrado");
+        }
+    }
+
+    public void execMostrarProduto(Scanner sc){
+
+        Produto produto = getProduct(sc);
+
+        if(produto != null){
+            System.out.println(produto.toString());
+        }
+    }
+
+    public void execMostrarTodo(){
+        for(Produto produto : listaProduto){
+            System.out.println(produto.toString());
+        }
+    }
+
+    private Produto getProduct(Scanner scan) {
+        System.out.println("Informe o SKU do produto: ");
+        int procurar = Integer.parseInt(scan.nextLine());
+        Produto produto = null;
+
+        for(Produto p : listaProduto){
+            if(p.getSku() == procurar){
+                produto = p;
+                break;
+            }
+        }
+        return produto;
+    }
+
+    private boolean codigoExiste(Integer codigo) {
+        for (Produto p : listaProduto) {
+            if(p.getSku() == codigo){
+                return true;
+            }
+        }
+        return false;
+    }
+}
