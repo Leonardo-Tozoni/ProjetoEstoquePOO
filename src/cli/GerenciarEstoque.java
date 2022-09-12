@@ -79,7 +79,7 @@ public class GerenciarEstoque {
 
     public void execAddEstoque(Scanner sc){
 
-        Produto produto = getProduct(sc);
+        Produto produto = getProduto(sc);
 
         if(produto != null){
             System.out.println("Informe quanto deseja acrescentar no estoque: ");
@@ -96,7 +96,7 @@ public class GerenciarEstoque {
 
     public void execRemoverEstoque(Scanner sc){
 
-        Produto produto = getProduct(sc);
+        Produto produto = getProduto(sc);
 
         if(produto != null){
             System.out.println("Informe quanto deve ser removido do estoque: ");
@@ -113,7 +113,7 @@ public class GerenciarEstoque {
 
     public void execMostrarProduto(Scanner sc){
 
-        Produto produto = getProduct(sc);
+        Produto produto = getProduto(sc);
 
         if(produto != null){
             System.out.println(produto.toString());
@@ -126,7 +126,7 @@ public class GerenciarEstoque {
         }
     }
 
-    private Produto getProduct(Scanner scan) {
+    private Produto getProduto(Scanner scan) {
         System.out.println("Informe o SKU do produto: ");
         int procurar = Integer.parseInt(scan.nextLine());
         Produto produto = null;
